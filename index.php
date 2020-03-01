@@ -19,11 +19,12 @@ mysqli_select_db($conn, $GLOBALS['db_username']);
 				<img id="logo2" src="src/logo2.png" width="20%" />
 			</div>
 			<div class="account">
-				<div>
-					<a href="">
-						<i class="material-icons cart">local_grocery_store</i>
-						<p>Cart</p>
-					</a>
+				<div id="login">
+					<form action="" method="POST">
+						Username: <input type="text" name="login" value="" /><br />
+						Password: <input type="text" name="login" value="" />
+						<input type="submit" name="OK" value="OK" />
+					</form>
 				</div>
 				<div id="register">
 					<a href="php/register.php">
@@ -31,10 +32,20 @@ mysqli_select_db($conn, $GLOBALS['db_username']);
 						<p>Sign&nbsp;in/ Register</p>
 					</a>
 				</div>
+				<div>
+					<a href="">
+						<i class="material-icons cart">local_grocery_store</i>
+						<p>Cart</p>
+					</a>
+				</div>
 			</div>
 		</div>
 		<div class="category">
 			<?php echo str_repeat("<a>categoria</a>", 5); ?>
+		</div>
+		<div class="title">
+			<h1>Categoria of items</h1>
+			<p>Discription of categoria<br />Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 		</div>
 		<div class="flex-container">
 			<?php

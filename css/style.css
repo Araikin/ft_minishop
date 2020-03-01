@@ -1,6 +1,6 @@
 body {
-	background-color: rgb(254, 249, 231);
-	margin: 0vw;
+	font-family: 'Poppins', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	margin: 0;
 }
 #logo {
 	margin-left: 3%;
@@ -12,17 +12,22 @@ body {
 }
 .account {
 	display: flex;
+	padding-top: 2%;
+	text-align: center;
 	justify-content: flex-end;
-	align-content: space-between;
+	align-content: space-between;/*/
+	justify-content: center;
+	align-items: center;/**/
 }
 .account div {
-	margin-left: 2vw;
-	margin-top: 1vw;
+	margin-right: 10%;
+	display: inline;
 }
 .account a {
+	width: 10vw;
 	text-decoration: none;
 	font-weight: bold;
-	color: rgb(220, 118, 51);
+	color: grey;
 }
 .account i {
 	padding: 1vw;
@@ -31,11 +36,16 @@ body {
 	text-align: center;
 	margin-top: 0px
 }
+.account #login {
+	padding-top: 2%;
+	text-align: left;
+	width: 10vw;
+}
 .category {
+	background-color: rgb(234, 178, 62);
 	display: flex;
 	justify-content: center;
 	align-content: space-between;
-	background-color: #333;
 	width: 100%;
 }
 .category a {
@@ -47,12 +57,25 @@ body {
 	text-align: center;
 }
 .category a:hover {
-	background-color: #ddd;
-	color: black;
+	color: rgb(21, 59, 109);
+}
+.title {
+	color: #333333;
+	width: 93%;
+	margin: auto;
+	margin-top: 1%;
+	text-align: left;
+}
+.title p {
+	color: grey;
+	margin-bottom: 0;
+	background-color: #eaeaea;
+	padding: 1%;
+	border-radius: 0.9vw;
 }
 .flex-container {
 	background-color: white;
-	padding-top: 2%;
+
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
@@ -64,7 +87,6 @@ body {
 	flex-basis: 20%;
 	border: 0.1vw solid grey;
 	border-radius: 2vw;
-
 }
 .item:hover {
 	box-shadow: 0.1vw 0.1vw 1vw grey;
