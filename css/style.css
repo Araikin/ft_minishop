@@ -1,29 +1,23 @@
 body {
 	background-color: rgb(254, 249, 231);
 }
-h1 {
-	font-family: 'Poppins', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	font-weight: bold;
-	font-size: 3vw;
-	display: inline-block;
+
+#logo {
+	margin-left: 3%;
 }
+
 i {
-	margin-left: -20px;
-	margin-bottom: -20px;
 	color: rgb(220, 118, 51);
-	font-size: 2vw;
 }
+
 .header {
 	display: flex;
-	padding: 5%;
+	padding: 1%;
 	align-content: space-between;
 }
 .account {
 	display: flex;
 	justify-content: flex-end;
-}
-.account > img {
-	width: 1vw;
 }
 .category {
 	display: flex;
