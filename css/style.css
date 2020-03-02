@@ -68,6 +68,7 @@ body {
 	text-align: left;
 }
 .title p {
+	font-size: larger;
 	color: grey;
 	margin-bottom: 0;
 	background-color: #eaeaea;
@@ -94,8 +95,19 @@ body {
 }
 .item img {
 	width: 99%;
-	border-radius: 2vw;
+	border-radius: 7vw;
 }
 .item p {
 	font-weight: bold;
+}
+.register {
+	text-align: center;
+	font-size: 2vw;
+}
+.register input {
+	height: 2vw;
+	border-radius: 0.5vw;
+}
+.register p {
+	margin-bottom: 0;
 }
