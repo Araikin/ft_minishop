@@ -40,7 +40,6 @@ if (isset($_POST['login'])) {
         array_push($errors, "Username is required!");
     if (empty($passwd))
         array_push($errors, "Password is required!");
-
     if (count($errors == 0)) {
         $getit = "SELECT * FROM users WHERE username='$username' AND passwd='$passwd'"; 
         $rows = mysqli_query($conn, $getit);
@@ -60,14 +59,19 @@ if (isset($_POST['login'])) {
 if (isset($_POST['add_item'])) {
     $item_name = mysqli_real_escape_string($conn, $_POST['name']);
     $item_price = mysqli_real_escape_string($conn, $_POST['price']);
+    $img = mysqli_real_escape_string($conn, $_POST['img-url']);
     $category = mysqli_real_escape_string($conn, $_POST['category']);
 
-    if (empty($item_name) || empty($item_price) || empty($category))
-        echo "Fill all data\n";
-    else {
+    if (empty($item_name))
+        array_push($errors, "Item name is required!");
+    if (empty($item_price))
+        array_push($errors, "Item name is required!");
+    if (empty($img))
+        array_push($errors, "Image url is required!");
+    if (count($errors) == 0) {
         add_item($conn, $item_name, $item_price, $category);
         echo "You added new item\n";
-        // header("Location: success.php");
+        header("Location: add_item.php");
     }
 }
 

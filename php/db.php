@@ -38,15 +38,16 @@ function create_table_items($conn) {
     $sql = "CREATE TABLE items( " .
             "id INT AUTO_INCREMENT PRIMARY KEY, " .
             "name VARCHAR(100) NOT NULL, " .
+            "img VARCHAR(255) NOT NULL, " .
             "price DOUBLE(10,2) NOT NULL )";
     mysqli_query($conn, $sql)
     or die('Could not create table: ' . mysqli_error($conn));
 }
 
-function add_item($conn, $name, $price, $category) {
+function add_item($conn, $name, $price, $img, $category) {
     $sql = "INSERT INTO items " .
-            "(name, price)" . "VALUES" .
-            "('$name', '$price')";
+            "(name, price, img)" . "VALUES" .
+            "('$name', '$price', '$img')";
     mysqli_query($conn, $sql)
     or die('Could not enter item data: ' . mysqli_error($conn));
     $result = mysqli_query($conn, 'SELECT LAST_INSERT_ID()');
