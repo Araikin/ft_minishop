@@ -9,7 +9,6 @@ $CATEG = array("newborn" => array("Toys for young infants—birth through 6 mont
 	"1 year" => array("Toys for 1-year-olds", "One-year-olds are on the go! Typically they can walk steadily and even climb stairs. They enjoy stories, say their first words, and can play next to other children (but not yet with!). They like to experiment—but need adults to keep them safe."),
 	"toddler" => array("Toys for 2-year-olds (toddlers)", "Toddlers are rapidly learning language and have some sense of danger. Nevertheless they do a lot of physical “testing”: jumping from heights, climbing, hanging by their arms, rolling, and rough-and-tumble play. They have good control of their hands and fingers and like to do things with small objects."),
 	"preschool/kids" => array("Toys for 3- to 6-year-olds (preschoolers and kindergarteners)", "Preschoolers and kindergartners have longer attention spans than toddlers. Typically they talk a lot and ask a lot of questions. They like to experiment with things and with  their still-emerging physical skills. They like to play with friends—and don’t like to lose! They can take turns—and sharing one toy by two or more children is often possible  for older preschoolers and kindergarteners."));
-// $CATEG = 
 ?>
 
 <html>
@@ -28,6 +27,7 @@ $CATEG = array("newborn" => array("Toys for young infants—birth through 6 mont
 			</div>
 			<div class="account">
 				<?php 
+					include ("php/errors.php");
 					if (!$_SESSION['username']) {
 						echo ('
 								<div id="login-form">
@@ -78,14 +78,21 @@ $CATEG = array("newborn" => array("Toys for young infants—birth through 6 mont
 		</div>
 		<div class="flex-container">
 			<?php
-				echo str_repeat("<div class='item'>
-								<form method='POST' action='php/addtocart'>
-									<img src='src/item1.jpg'/>
-									<p>\$NAME</p>
-									<p>PRICE: \$VAR_PRICE</p>
-									<input type='submit' name='buy' value='BUY'>
-								</form>
-								</div>", 12);
+				$cat = $_GET['categ'];
+				$result = mysqli_query($conn, "SELECT item_id FROM categories WHERE category='$cat'");
+				while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+					$id=$row['item_id'];
+					$result2 = mysqli_query($conn, "SELECT * FROM items where id='$id'");
+					$items = mysqli_fetch_array($result2);
+					echo ("<div class='item'>
+							<form method='POST' action='php/addtocart'>
+								<img src='$items[img]'/>
+								<p>$items[name]</p>
+								<p>PRICE: \$$items[price]</p>
+								<input type='submit' name='buy' value='BUY'>
+							</form>
+							</div>");
+				}
 			?>
 		</div>
 	</body>

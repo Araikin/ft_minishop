@@ -25,7 +25,13 @@ include ('connect_db.php');
 					<form action="add_item.php" method="POST">
 						<input type="text" name="name" placeholder="Item name" /> 
 						<input type="text" name="price" placeholder="Item price" />
-						<select type="text" name="category" placeholder="Item category" />
+						<select type="text" name="category" placeholder="Item category" required>
+							<option value="newborn">Newborn</option>
+							<option value="infant">Infant</option>
+							<option value="1 year">1 year</option>
+							<option value="toddler">Toddler</option>
+							<option value="prechool/kids">Preschool/Kids</option>
+						</select>
 						<input type="text" name="img-url" placeholder="Image url" />
 						<input type="submit" name="add_item" value="ADD ITEM" />
 						<p><?php include('errors.php'); ?></p>

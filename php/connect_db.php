@@ -3,6 +3,7 @@ include ("db.php");
 session_start();
 $conn = connect_db();
 $errors = [];
+
 if (isset($_POST['register'])) {
     $username = mysqli_real_escape_string($conn, $_POST['username']);
     $passwd = hash("Whirlpool", mysqli_real_escape_string($conn, $_POST['passwd']));
@@ -34,24 +35,31 @@ if (isset($_POST['logout'])) {
 
 if (isset($_POST['login'])) {
     $username = mysqli_real_escape_string($conn, $_POST['username']);
-    $passwd = hash("Whirlpool", mysqli_real_escape_string($conn, $_POST['passwd']));
+    $passwd = hash("whirlpool", mysqli_real_escape_string($conn, $_POST['passwd']));
 
+    header("Location: index.php?success=");
     if (empty($username))
         array_push($errors, "Username is required!");
     if (empty($passwd))
         array_push($errors, "Password is required!");
-    if (count($errors == 0)) {
-        $getit = "SELECT * FROM users WHERE username='$username' AND passwd='$passwd'"; 
+    if (count($errors) > 0)
+        header("Location: php/register.php?errors=");
+    if (count($errors) == 0) {
+        echo "test\n";
+        $getit = "SELECT * FROM users WHERE username='$username' AND password='$passwd'"; 
         $rows = mysqli_query($conn, $getit);
-        if (!$rows)
+        if (mysqli_num_rows($rows) == 0)
             die(mysqli_error($conn));
         if (mysqli_num_rows($rows) == 1) {
             $_SESSION['username'] = $username;
             $_SESSION['loggedin'] = 'You are now logged in.';
-            header("Location: index.php");
+            header("Location: php/register.php");
         }
         else
+        {
             array_push($errors, "Wrong username/password!");
+            header("Location: php/register.php?wrong");
+        }
     }
    
 }
