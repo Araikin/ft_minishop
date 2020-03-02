@@ -24,19 +24,28 @@ $CATEG = array("newborn" => array("Toys for young infants—birth through 6 mont
 				<img id="logo2" src="src/logo2.png" width="20%" />
 			</div>
 			<div class="account">
-				<div id="login">
-					<form action="" method="POST">
-						Username: <input type="text" name="login" value="" /><br />
-						Password: <input type="text" name="login" value="" />
-						<input type="submit" name="OK" value="OK" />
-					</form>
-				</div>
-				<div id="register">
-					<a href="php/register.php">
-						<i id="register" class="material-icons">account_circle</i>
-						<p>Sign&nbsp;in/ Register</p>
-					</a>
-				</div>
+				<?php 
+					if (!$_SESSION['username']) {
+						echo ('
+								<div id="login-form">
+									<form action="index.php" method="POST">
+										<input type="text" name="username" placeholder="username" value="" /><br />
+										<input type="password" name="passwd" placeholder="password" value="" />
+										<input id="login" type="submit" name="login" value="LOGIN" />
+									</form>
+									<a href="php/register.php"><button id="register">REGISTER</button></a>
+								</div>');
+					}
+					else {
+						echo ('
+							<div id="logout">
+								<form action="php/logout.php" method="POST">
+									<i class="material-icons">account_circle</i>
+									<input type="submit" name="logout" value="LOGOUT">
+								</form>
+							</div>');
+					}
+				?>
 				<div>
 					<a href="">
 						<i class="material-icons cart">local_grocery_store</i>
@@ -48,7 +57,7 @@ $CATEG = array("newborn" => array("Toys for young infants—birth through 6 mont
 		<div class="category">
 			<?php
 				foreach ($CATEG as $NAME => $VAL)
-					echo "<a style=color:(#15325C)*($_GET['categ']===$NAME) href=\'?categ=$NAME'>$NAME</a>";
+					echo "<a style=color:(#15325C)*($_GET[categ]===$NAME) href=\'?categ=$NAME'>$NAME</a>";
 			?>
 		</div>
 		<div class="title">
@@ -58,11 +67,13 @@ $CATEG = array("newborn" => array("Toys for young infants—birth through 6 mont
 		<div class="flex-container">
 			<?php
 				echo str_repeat("<div class='item'>
+								<form method='POST' action='php/addtocart'>
 									<img src='src/item1.jpg'/>
 									<p>\$NAME</p>
-									<a>SKU: \$VAR_SKU</a>
 									<p>PRICE: \$VAR_PRICE</p>
-								</div>", 122);
+									<input type='submit' name='buy' value='BUY'>
+								</form>
+								</div>", 12);
 			?>
 		</div>
 	</body>

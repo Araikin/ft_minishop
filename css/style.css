@@ -36,10 +36,22 @@ body {
 	text-align: center;
 	margin-top: 0px
 }
-.account #login {
-	padding-top: 2%;
-	text-align: left;
-	width: 10vw;
+input[type="text"], input[type="password"] {
+	text-align: center;
+	font-size: 1vw;
+}
+
+#login {
+	margin-top: 0.4vw;
+	text-align: center;
+	font-size: 5vw;
+	width: 100%;
+	height: 10%;
+}
+#register {
+	width: 100%;
+	font-size: 0.6vw;
+	height: 10%;
 }
 .category {
 	background-color: rgb(234, 178, 62);
